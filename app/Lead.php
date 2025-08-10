@@ -6,7 +6,7 @@ use App\Notifications\LeadAssigned;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Lead extends BaseModel
+class Lead extends BaseModelWithUuid
 {
     use SoftDeletes, Taggable, Assignable, Subscribable;
 

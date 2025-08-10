@@ -20,4 +20,26 @@ class BaseModelWithUuid extends BaseModel
             $model->uuid = (string) Uuid::uuid4()->toString();
         } );
     }
+
+    /**
+     * Find a model by its UUID
+     *
+     * @param string $uuid
+     * @return self
+     */
+    public static function findByUuid(string $uuid): ?self
+    {
+        return self::where('uuid', $uuid)->first();
+    }
+
+    /**
+     * Find a model by its UUID, fail if not found
+     *
+     * @param string $uuid
+     * @return self
+     */
+    public static function findOrFailByUuid(string $uuid): ?self
+    {
+        return self::where('uuid', $uuid)->firstOrFail();
+    }
 }
