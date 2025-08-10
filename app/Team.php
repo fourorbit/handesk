@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 
-class Team extends BaseModel
+class Team extends BaseModelWithUuid
 {
     use Notifiable;
 

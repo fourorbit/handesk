@@ -7,6 +7,7 @@ use App\Authenticatable\Assistant;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @property string name
@@ -22,6 +23,20 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Setup model event hooks
+     *
+     * @return void
+     */
+    public static function bootHasUuid()
+    {
+        self::creating(function(self $model) {
+            // Generate a value for the UUID column, as defined in uuidColumn( ),
+            // just before a new instance is saved to the database.
+            $model->{$model->uuid} = (string) Uuid::uuid4()->toString();
+        } );
+    }
 
     public function tickets()
     {

@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 
-class Ticket extends BaseModel
+class Ticket extends BaseModelWithUuid
 {
     use SoftDeletes, Taggable, Assignable, Subscribable, Rateable;
 
