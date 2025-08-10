@@ -134,7 +134,7 @@ class Ticket extends BaseModelWithUuid
 
     /**
      * @param  $user
-     * @param  $newStatus     
+     * @param  $newStatus
      * @return mixed
      */
     private function updateStatusFromComment($user, $newStatus)
