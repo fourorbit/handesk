@@ -133,8 +133,8 @@ class Ticket extends BaseModelWithUuid
     }
 
     /**
-     * @param $user
-     * @param $newStatus
+     * @param  $user
+     * @param  $newStatus
      *
      * @return mixed
      */
@@ -319,10 +319,10 @@ class Ticket extends BaseModelWithUuid
     {
         $repo  = explode('/', $repository);
         $issue = $issueCreator->createIssue(
-                $repo[0],
-                $repo[1],
-                $this->subject ?? $this->title,
-                'Issue from ticket: '.route('tickets.show', $this)."   \n\r".($this->summary ?? $this->body)
+            $repo[0],
+            $repo[1],
+            $this->subject ?? $this->title,
+            'Issue from ticket: '.route('tickets.show', $this)."   \n\r".($this->summary ?? $this->body)
         );
         $issueUrl = "https://bitbucket.org/{$repository}/issues/{$issue->id}";
         $this->addNote(auth()->user(), "Issue created {$issueUrl} with id #{$issue->id}");

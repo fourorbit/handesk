@@ -19,13 +19,13 @@ class AddUuidToTicketsTable extends Migration
             $table->uuid('uuid');
         });
 
-        foreach(Ticket::all() as $ticket) {
+        foreach (Ticket::all() as $ticket) {
             $ticket->update(
                 [
-                    'uuid' => Uuid::uuid4()->toString(),
+                    'u  uid' => Uuid::uuid4()->toString(),
                 ]
             );
-        };
+        }
 
         Schema::table('tickets', function (Blueprint $table) {
             $table->unique('uuid');

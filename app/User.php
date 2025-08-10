@@ -25,17 +25,17 @@ class User extends Authenticatable
     ];
 
     /**
-     * Setup model event hooks
+     * Setup model event hooks.
      *
      * @return void
      */
     public static function bootHasUuid()
     {
-        self::creating(function(self $model) {
+        self::creating(function (self $model) {
             // Generate a value for the UUID column, as defined in uuidColumn( ),
             // just before a new instance is saved to the database.
-            $model->{$model->uuid} = (string) Uuid::uuid4()->toString();
-        } );
+            $model->uuid = (string) Uuid::uuid4()->toString();
+        });
     }
 
     public function tickets()
@@ -97,7 +97,7 @@ class User extends Authenticatable
     /**
      * @deprecated
      *
-     * @param $notification
+     * @param  $notification
      */
     public static function notifyAdmins($notification)
     {
@@ -107,7 +107,7 @@ class User extends Authenticatable
     /**
      * @deprecated
      *
-     * @param $notification
+     * @param  $notification
      */
     public static function notifyAssistants($notification)
     {

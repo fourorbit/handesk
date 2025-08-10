@@ -19,13 +19,13 @@ class AddUuidToRequestersTable extends Migration
             $table->uuid('uuid');
         });
 
-        foreach(Requester::all() as $requester) {
+        foreach (Requester::all() as $requester) {
             $requester->update(
                 [
                     'uuid' => Uuid::uuid4()->toString(),
                 ]
             );
-        };
+        }
 
         Schema::table('requesters', function (Blueprint $table) {
             $table->unique('uuid');

@@ -19,13 +19,13 @@ class AddUuidToCommentsTable extends Migration
             $table->uuid('uuid');
         });
 
-        foreach(Comment::all() as $user) {
+        foreach (Comment::all() as $user) {
             $user->update(
                 [
                     'uuid' => Uuid::uuid4()->toString(),
                 ]
             );
-        };
+        }
 
         Schema::table('comments', function (Blueprint $table) {
             $table->unique('uuid');

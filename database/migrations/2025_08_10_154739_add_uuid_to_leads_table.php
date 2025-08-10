@@ -19,13 +19,13 @@ class AddUuidToLeadsTable extends Migration
             $table->uuid('uuid');
         });
 
-        foreach(Lead::all() as $lead) {
+        foreach (Lead::all() as $lead) {
             $lead->update(
                 [
                     'uuid' => Uuid::uuid4()->toString(),
                 ]
             );
-        };
+        }
 
         Schema::table('leads', function (Blueprint $table) {
             $table->unique('uuid');

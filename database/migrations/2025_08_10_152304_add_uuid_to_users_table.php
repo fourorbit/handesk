@@ -19,13 +19,13 @@ class AddUuidToUsersTable extends Migration
             $table->uuid('uuid');
         });
 
-        foreach(User::all() as $user) {
+        foreach (User::all() as $user) {
             $user->update(
                 [
                     'uuid' => Uuid::uuid4()->toString(),
                 ]
             );
-        };
+        }
 
         Schema::table('users', function (Blueprint $table) {
             $table->unique('uuid');
