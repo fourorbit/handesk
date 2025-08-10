@@ -19,7 +19,7 @@ class AddUuidToTeamsTable extends Migration
             $table->uuid('uuid');
         });
 
-        foreach( Team::all() as $team) {
+        foreach (Team::all() as $team) {
             $team->update(
                 [
                     'uuid' => Uuid::uuid4()->toString(),

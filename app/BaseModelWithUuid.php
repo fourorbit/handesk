@@ -24,7 +24,7 @@ class BaseModelWithUuid extends BaseModel
     /**
      * Find a model by its UUID.
      *
-     * @param  string $uuid
+     * @param  string  $uuid
      * @return self
      */
     public static function findByUuid(string $uuid): ?self
@@ -35,7 +35,7 @@ class BaseModelWithUuid extends BaseModel
     /**
      * Find a model by its UUID, fail if not found.
      *
-     * @param  string $uuid
+     * @param  string  $uuid
      * @return self
      */
     public static function findOrFailByUuid(string $uuid): ?self
