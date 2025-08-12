@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 
-class Requester extends BaseModel
+class Requester extends BaseModelWithUuid
 {
     use Notifiable;
 

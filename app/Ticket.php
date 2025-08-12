@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Str;
 
-class Ticket extends BaseModel
+class Ticket extends BaseModelWithUuid
 {
     use SoftDeletes, Taggable, Assignable, Subscribable, Rateable;
 
@@ -133,9 +133,8 @@ class Ticket extends BaseModel
     }
 
     /**
-     * @param $user
-     * @param $newStatus
-     *
+     * @param  $user
+     * @param  $newStatus
      * @return mixed
      */
     private function updateStatusFromComment($user, $newStatus)
@@ -319,10 +318,10 @@ class Ticket extends BaseModel
     {
         $repo  = explode('/', $repository);
         $issue = $issueCreator->createIssue(
-                $repo[0],
-                $repo[1],
-                $this->subject ?? $this->title,
-                'Issue from ticket: '.route('tickets.show', $this)."   \n\r".($this->summary ?? $this->body)
+            $repo[0],
+            $repo[1],
+            $this->subject ?? $this->title,
+            'Issue from ticket: '.route('tickets.show', $this)."   \n\r".($this->summary ?? $this->body)
         );
         $issueUrl = "https://bitbucket.org/{$repository}/issues/{$issue->id}";
         $this->addNote(auth()->user(), "Issue created {$issueUrl} with id #{$issue->id}");

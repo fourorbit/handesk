@@ -9,7 +9,7 @@ use App\Services\Mentions;
 use Illuminate\Support\Arr;
 use Notification;
 
-class Comment extends BaseModel
+class Comment extends BaseModelWithUuid
 {
     protected $appends = ['author'];
 
