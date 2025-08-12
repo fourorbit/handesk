@@ -29,12 +29,12 @@ class User extends Authenticatable
      *
      * @return void
      */
-    public static function bootHasUuid()
+    public static function boot()
     {
         self::creating(function (self $model) {
             // Generate a value for the UUID column, as defined in uuidColumn( ),
             // just before a new instance is saved to the database.
-            $model->uuid = (string) Uuid::uuid4()->toString();
+            $model->uuid = Uuid::uuid4()->toString();
         });
     }
 
